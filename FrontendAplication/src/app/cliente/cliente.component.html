@@ -22,7 +22,7 @@
             <th>Apellido</th>
             <th>Nacimiento</th>
             <th>Edad</th>
-            <th>
+            <th class="text-right">
                 <button class="btn btn-success" (click)="new()"> Nuevo </button>
             </th>
         </tr>
@@ -31,6 +31,16 @@
             <td>{{row.apellido}}</td>
             <td>{{row.nacimiento}}</td>
             <td>{{row.edad}}</td>
+            <td class="text-right">
+                <div *ngIf="!row.confirm">
+                    <button class="btn btn-danger" (click)="row.confirm =true">Eliminar</button>
+                </div>
+
+                <div *ngIf="row.confirm">
+                    <button class="btn btn-success" (click)="delete(row.id)">Confirmar</button>
+                    <button class="btn btn-danger" (click)="row.confirm = false">Cancelar</button>
+                </div>
+            </td>
         </tr>
 
     </table>
