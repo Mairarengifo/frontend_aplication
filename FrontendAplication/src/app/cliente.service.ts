@@ -9,15 +9,15 @@ export class ClienteService {
 
   constructor(private http: Http) { }
   read(){
-    return this.http.get('http://127.0.0.1:8000/clientes');
+    return this.http.get('/api/clientes');
   }
   insert(data: Cliente){
-    return this.http.post('http://127.0.0.1:8000/clientes',data);
+    return this.http.post('/api/clientes',data);
   }
   update(data: Cliente){
-    return this.http.put('http://127.0.0.1:8000/clientes/' + data.id, data);
+    return this.http.put('/api/clientes/' + data.id, data);
   }
   delete(id){
-    return this.http.delete('http://127.0.0.1:8000/clientes/' + id);
+    return this.http.delete('/api/clientes/' + id);
   }
 }

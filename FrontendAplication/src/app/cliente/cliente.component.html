@@ -1,1 +1,17 @@
-<p>cliente works!</p>
+<div class="panel-body">
+    <table class="table table-striped">
+        <tr>
+            <td>Nombre</td>
+            <td>Apellido</td>
+            <td>Nacimiento</td>
+            <td>Edad</td>
+        </tr>
+        <tr *ngFor="let row of data">
+            <td>{{row.nombre}}</td>
+            <td>{{row.apellido}}</td>
+            <td>{{row.nacimiento}}</td>
+            <td>{{row.edad}}</td>
+        </tr>
+
+    </table>
+</div>
