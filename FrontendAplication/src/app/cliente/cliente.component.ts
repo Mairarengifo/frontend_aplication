@@ -17,16 +17,14 @@ export class ClienteComponent implements OnInit {
   }
     
   ngOnInit(): void {
-    this.service.read().subscribe(res =>{
-      this.data = res.json();
-      this.current_clien = new Cliente();
-    });
+    this.refresh();
   }
 
   new(){
     this.current_clien = new Cliente();
     this.crud_operation.is_visible = true;
     this.crud_operation.is_new = true;
+    this.refresh();
   }
 
   save(){
@@ -34,14 +32,15 @@ export class ClienteComponent implements OnInit {
       this.service.insert(this.current_clien).subscribe(res=>{
         this.current_clien = new Cliente();
         this.crud_operation.is_visible = false;
-        this.ngOnInit;
+        this.refresh();
       });
+      
       return;
     }
-    this.service.update(this.current_clien).subscribe(res=>{
+      this.service.update(this.current_clien).subscribe(res=>{
       this.current_clien = new Cliente();
       this.crud_operation.is_visible = false;
-      this.ngOnInit;
+      this.refresh();
     });
   }
 
@@ -54,7 +53,14 @@ export class ClienteComponent implements OnInit {
   delete(id){
     this.service.delete(id).subscribe(res => {
       this.crud_operation.is_new = false;
-      this.ngOnInit;
+      this.refresh();
+    });
+  }
+
+  refresh(){
+    this.service.read().subscribe(res =>{
+      this.data = res.json();
+      this.current_clien = new Cliente();
     });
   }
 
